@@ -1,0 +1,37 @@
+spring :    
+    devtools :
+        livereload :
+            enalbed : true
+    thymeleaf:
+        cache : false       
+    datasource:
+        hikari :
+            maximum-pool-size : 4
+        url : "@db.url@"  
+        username : "@db.username@"
+        password : "@db.password@"
+    servlet :    
+        multipart : 
+            maxFileSize : 50MB 
+            maxRequestSize : 50MB
+
+mybatis :
+    type-aliases-package : com.bamdule.travelMap.model
+    mapper-locations : mapper/xml/*.xml
+
+logback_dir : "@logback.dir@"
+logback_level : "@logback.level@"
+    
+    
+#server : 
+#    type : @server.type@
+#    
+#aws :
+#    s3 :
+#        bucket :
+#            name : @aws.s3.bucket.name@
+#            dir : @aws.s3.bucket.dir@
+#        
+#        accessKey : @aws.s3.accessKey@
+#        secretKey : @aws.s3.secretKey@
+#        region : @aws.s3.region@
