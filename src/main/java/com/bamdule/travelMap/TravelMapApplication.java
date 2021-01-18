@@ -16,4 +16,10 @@ public class TravelMapApplication {
     public ObjectMapper getObjectMapper() {
         return new ObjectMapper();
     }
+
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
 }

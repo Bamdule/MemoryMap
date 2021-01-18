@@ -1,0 +1,146 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bamdule.travelMap.db.dao.UserMapper">
+    <insert id="saveUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (
+            account, 
+            password, 
+            name,
+            profile_img_id,
+            create_dt,
+            update_dt
+        ) VALUES (
+            #{account},
+            #{password},
+            #{name},
+            #{profileImgId},
+            #{createDt},
+            #{updateDt}
+        ) 
+        ON DUPLICATE KEY UPDATE 
+        profile_img_id = #{profileImgId}, 
+        name = #{name},
+        update_dt = #{updateDt}
+    </insert>
+    
+<!--    <select id="getAdminById" resultType="admin" parameterType="int">
+        SELECT
+                    a.id,
+        a.account,
+        a.name,
+        a.email,
+        a.active,
+        a.admin_group_id as 'adminGroupId',
+        b.name as 'adminGroupName',
+        a.admin_id as 'adminId',
+        a.create_dt as 'createDt',
+        a.update_dt as 'updateDt',
+        c.name as 'updater'
+        FROM admin a
+        JOIN admin_group b ON (b.id = a.admin_group_id)
+        LEFT JOIN admin c ON (c.id = a.admin_id)
+        WHERE
+        a.id = #{id}
+    </select>
+    
+    <select id="getListAdminByCondtion" resultType="admin" parameterType="jqGridSearch">
+        SELECT
+        a.id,
+        a.account,
+        a.name,
+        a.email,
+        a.active,
+        a.admin_group_id as 'adminGroupId',
+        b.name as 'adminGroupName',
+        a.admin_id as 'adminId',
+        a.create_dt as 'createDt',
+        a.update_dt as 'updateDt',
+        c.name as 'updater'
+        FROM admin a
+        JOIN admin_group b ON (b.id = a.admin_group_id)
+        LEFT JOIN admin c ON (c.id = a.admin_id)
+        <where>
+            <if test="searchValue != null and searchValue != ''.toString()">
+                ${searchKey} LIKE CONCAT(#{searchValue},'%') 
+            </if>
+            <if test="search.adminGroupId != null">
+                AND a.admin_group_id = #{search.adminGroupId}
+            </if>
+            <if test="search.active != null">
+                AND a.active = #{search.active}
+            </if>
+        </where>
+        ORDER BY ${sidx} ${sord}
+        LIMIT #{rows} OFFSET #{offset}
+    </select>
+    
+    <select id="getAdminTotalCount" resultType="int" parameterType="jqGridSearch">
+        SELECT
+        COUNT(*)
+        FROM admin a
+        JOIN admin_group b ON (b.id = a.admin_group_id)
+        <where>
+            <if test="searchValue != null and searchValue != ''.toString()">
+                ${searchKey} = #{searchValue}
+            </if>
+            <if test="search.adminGroupId != null">
+                AND a.admin_group_id = #{search.adminGroupId}
+            </if>
+            <if test="search.active != null">
+                AND a.active = #{search.active}
+            </if>
+        </where>
+    </select>    
+    
+    <insert id="saveAdmin" parameterType="admin">
+        INSERT INTO admin (
+        admin_group_id, 
+        account, 
+        password, 
+        name, 
+        email, 
+        active, 
+        create_dt, 
+        update_dt, 
+        admin_id      
+        ) VALUES(
+        #{adminGroupId},
+        #{account},
+        #{password},
+        #{name},
+        #{email},
+        #{active},
+        #{createDt},
+        #{updateDt},
+        #{adminId}
+        )
+    </insert>
+    <update id="updateAdmin" parameterType="admin">
+        UPDATE admin
+        SET
+        admin_group_id = #{adminGroupId},
+        <if test="password != null and password != ''.toString()">
+            password = #{password},
+        </if>
+        name = #{name},
+        email = #{email},
+        active = #{active},
+        update_dt = #{updateDt},
+        admin_id = #{adminId}
+        WHERE 
+        id = #{id}
+    </update>
+    
+    <select id="overlapAccount" parameterType="map" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM admin a
+        WHERE
+        a.account = #{account} 
+        <if test="id != null">
+            AND a.id != #{id}
+        </if>
+    </select>-->
+</mapper>
