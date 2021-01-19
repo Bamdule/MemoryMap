@@ -1,0 +1,40 @@
+<html lagn="ko" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <!--configFragment 선언-->
+    <th:block th:fragment="configFragment">
+        <!--<link rel="stylesheet" th:href="@{/css/lib/semantic.min.css}"  />-->
+        <!--<link rel="stylesheet" th:href="@{/css/lib/jquery-ui/jquery-ui.min.css}"  />-->
+
+        <!--<link rel="stylesheet" th:href="@{/css/lib/jqgrid/ui.jqgrid.css}"  />-->
+        <!--<link rel="stylesheet" th:href="@{/css/lib/jqgrid/ui.multiselect.css}"  />-->
+        <!--<link rel="stylesheet" th:href="@{/css/common/common.css}" />-->
+        <!--<link rel="stylesheet" th:href="@{/css/common/bam.css}" />-->
+
+        <!--jquery-->
+        <!--<script th:src="@{/js/lib/jquery/jquery-3.4.1.min.js}"></script>-->
+
+        <!--common-->
+        <!--<script th:src="@{/js/common/common.js}"></script>-->
+
+        <!--<script th:src="@{/js/lib/semantic.min.js}"></script>-->
+        <!--<script th:src="@{/js/lib/jquery-ui/jquery-ui.min.js}"></script>-->
+        <!--<script th:src="@{/js/lib/jquery/jquery-validate-min.js}"></script>-->
+
+        <!--<script th:src="@{/js/lib/jquery/jquery-form.js}"></script>-->
+        <!--jqgrid-->        
+        <!--<script th:src="@{/js/lib/jqgrid/grid.locale-kr.js}"></script>-->
+        <!--<script th:src="@{/js/lib/jqgrid/jquery.jqGrid.min.js}"></script>-->
+
+        <!--<script th:src="@{/js/common/FileManager.js}"></script>-->
+
+
+
+        <!-- Content Page의 CSS fragment 삽입 -->
+        <th:block layout:fragment="css"></th:block>
+
+        <!-- Content Page의 script fragment 삽입 -->
+        <th:block layout:fragment="script"></th:block>
+    </th:block>
+</html>

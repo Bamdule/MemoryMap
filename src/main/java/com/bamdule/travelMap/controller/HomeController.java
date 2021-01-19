@@ -24,6 +24,7 @@ public class HomeController {
     
     @GetMapping(value = "/")
     public String homeView() {
-        return "home";
+        logger.info("[MYTEST] homeView");
+        return "page/main";
     }
 }
