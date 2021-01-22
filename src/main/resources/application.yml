@@ -16,7 +16,7 @@ spring :
             maxRequestSize : 50MB
 
 mybatis :
-    type-aliases-package : com.bamdule.travelMap.model
+    type-aliases-package : com.bamdule.memorymap.model
     mapper-locations : mapper/xml/*.xml
 
 logback_dir : "@logback.dir@"

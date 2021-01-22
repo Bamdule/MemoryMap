@@ -1,0 +1,35 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin : 0;
+
+}
+#container {
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 1fr;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    background-color: white; 
+    border-bottom: #eeeeee solid 1px;
+}
+#header-wrap{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#content {
+    display: flex;
+    justify-content: center;
+}
+#content-wrap{
+    width: 70%;
+    height: 100%;
+}
