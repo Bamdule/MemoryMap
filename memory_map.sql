@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `file_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 내보낼 데이터가 선택되어 있지 않습니다.
+
 -- 테이블 memory_map.memory 구조 내보내기
 CREATE TABLE IF NOT EXISTS `memory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
