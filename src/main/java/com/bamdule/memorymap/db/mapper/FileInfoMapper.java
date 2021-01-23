@@ -8,10 +8,14 @@ import org.apache.ibatis.annotations.Mapper;
  * @author MW
  */
 @Mapper
-public interface FileMapper {
+public interface FileInfoMapper {
+
+    public int getFileInfoNextSeq();
+
+    public FileInfo getFileInfo(Integer id);
 
     public void saveFile(FileInfo fileInfo);
 
-    public void deleteFile(String path);
+    public void deleteFile(Integer id);
 
 }

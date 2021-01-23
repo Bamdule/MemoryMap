@@ -11,7 +11,7 @@ public class FileInfo {
     private Integer id;
     private String orgFilename;
     private String path;
-    private String type;
+    private String contentType;
     private LocalDateTime createDt;
     private LocalDateTime updateDt;
 
@@ -39,12 +39,12 @@ public class FileInfo {
         this.path = path;
     }
 
-    public String getType() {
-        return type;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     public LocalDateTime getCreateDt() {
@@ -63,10 +63,9 @@ public class FileInfo {
         this.updateDt = updateDt;
     }
 
-
     @Override
     public String toString() {
-        return "FileInfo{" + "id=" + id + ", orgFilename=" + orgFilename + ", path=" + path + ", type=" + type + ", createDt=" + createDt + ", updateDt=" + updateDt + '}';
+        return "FileInfo{" + "id=" + id + ", orgFilename=" + orgFilename + ", path=" + path + ", contentType=" + contentType + ", createDt=" + createDt + ", updateDt=" + updateDt + '}';
     }
 
 }

@@ -18,12 +18,12 @@ USE `memory_map`;
 
 -- 테이블 memory_map.file_info 구조 내보내기
 CREATE TABLE IF NOT EXISTS `file_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `org_file_name` varchar(300) NOT NULL,
-  `update_dt` datetime NOT NULL,
   `path` varchar(300) NOT NULL,
-  `type` char(2) NOT NULL,
+  `content_type` varchar(50) NOT NULL,
   `create_dt` datetime NOT NULL,
+  `update_dt` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS `memory` (
   `description` text DEFAULT NULL,
   `address` varchar(300) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_memory_user_idx` (`user_id`),
   CONSTRAINT `fk_memory_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -50,6 +52,9 @@ CREATE TABLE IF NOT EXISTS `place` (
   `y` double NOT NULL,
   `order` int(11) NOT NULL,
   `memory_id` int(11) NOT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
+  `memory_dt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Place_memory1_idx` (`memory_id`),
   CONSTRAINT `fk_Place_memory1` FOREIGN KEY (`memory_id`) REFERENCES `memory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -59,13 +64,13 @@ CREATE TABLE IF NOT EXISTS `place` (
 -- 테이블 memory_map.place_file 구조 내보내기
 CREATE TABLE IF NOT EXISTS `place_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file_info_id` int(11) NOT NULL,
   `place_id` int(11) NOT NULL,
+  `file_info_id` int(11) NOT NULL,
   `order` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_place_file_file1_idx` (`file_info_id`),
   KEY `fk_place_file_place1_idx` (`place_id`),
-  CONSTRAINT `fk_place_file_file1` FOREIGN KEY (`file_info_id`) REFERENCES `file_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `FK_place_file_info` (`file_info_id`),
+  CONSTRAINT `FK_place_file_info` FOREIGN KEY (`file_info_id`) REFERENCES `file_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_place_file_place1` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -90,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `place_reply` (
   `reply_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `place_id` int(11) NOT NULL,
+  `create_dt` datetime DEFAULT NULL,
+  `update_dt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_place_reply_place_reply_idx` (`reply_id`),
   KEY `fk_place_reply_user1_idx` (`user_id`),
@@ -132,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `property` (
   `type` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 -- 테이블 memory_map.seq_file 구조 내보내기
@@ -162,13 +169,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `account` varchar(45) NOT NULL,
+  `profile_img_id` int(11) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `profile_img_id` int(11) DEFAULT NULL,
   `create_dt` datetime DEFAULT NULL,
   `update_dt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_user_file1_idx` (`profile_img_id`),
-  CONSTRAINT `fk_user_file1` FOREIGN KEY (`profile_img_id`) REFERENCES `file_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `FK_user_file_info` (`profile_img_id`),
+  CONSTRAINT `FK_user_file_info` FOREIGN KEY (`profile_img_id`) REFERENCES `file_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
@@ -176,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 CREATE TABLE IF NOT EXISTS `user_follower` (
   `user_id` int(11) NOT NULL,
   `follower_user_id` int(11) NOT NULL,
+  `create_dt` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`follower_user_id`),
   KEY `fk_user_follower_user1_idx` (`user_id`),
   KEY `fk_user_follower_user2_idx` (`follower_user_id`),
@@ -188,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `user_follower` (
 CREATE TABLE IF NOT EXISTS `user_following` (
   `user_id` int(11) NOT NULL,
   `following_user_id` int(11) NOT NULL,
+  `create_dt` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`following_user_id`),
   KEY `fk_user_following_user1_idx` (`user_id`),
   KEY `fk_user_following_user2_idx` (`following_user_id`),

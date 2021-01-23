@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bamdule.memorymap.util.aws;
 
 import com.amazonaws.AmazonServiceException;
@@ -19,12 +14,15 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.bamdule.memorymap.config.ServerConfig;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -63,6 +61,22 @@ public class AwsS3 {
 
     public void upload(File file, String key) {
         uploadToS3(new PutObjectRequest(this.bucket, key, file));
+    }
+
+    public void upload(MultipartFile file, String key) {
+        ObjectMetadata metadata = new ObjectMetadata();
+        metadata.setContentLength(file.getSize());
+
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentType(file.getContentType());
+        objectMetadata.setContentLength(file.getSize());
+
+        try {
+            uploadToS3(new PutObjectRequest(this.bucket, key, file.getInputStream(), objectMetadata));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void upload(InputStream is, String key, String contentType, long contentLength) {

@@ -3,32 +3,39 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bamdule.memorymap.db.mapper.FileInfoMapper">
-<!--    <select id="getListProperty" resultType="property" parameterType="string">
-        SELECT *
-        FROM property
-        WHERE
-            type = #{type}
-    </select>-->
+    <select id="getFileInfoNextSeq" resultType="int">
+        select nextval(seq_file)
+    </select>
     
-<!--    <insert id="saveFile" parameterType="file">
-        INSERT INTO user (
-        account, 
-        password, 
-        name,
-        profile_img_id,
-        create_dt,
-        update_dt
+    <select id="getFileInfo" parameterType="int" resultType="fileInfo">
+        SELECT * FROM file_info WHERE id = #{id}
+    </select>
+    
+    <insert id="saveFile" parameterType="fileInfo">
+        INSERT INTO file_info (
+            id, 
+            org_file_name, 
+            path,
+            content_type,
+            create_dt,
+            update_dt
         ) VALUES (
-        #{account},
-        #{password},
-        #{name},
-        #{profileImgId},
-        #{createDt},
-        #{updateDt}
+            #{id},
+            #{orgFilename},
+            #{path},
+            #{contentType},
+            now(),
+            now()
         ) 
         ON DUPLICATE KEY UPDATE 
-        profile_img_id = #{profileImgId}, 
-        name = #{name},
-        update_dt = #{updateDt}
-    </insert>-->
+            org_file_name = #{orgFilename}, 
+            path = #{path},
+            content_type = #{contentType},
+            update_dt = now()
+    </insert>
+    
+    <delete id="deleteFile" parameterType="int">
+        delete from file_info where id = #{id}
+    </delete>
+    
 </mapper>

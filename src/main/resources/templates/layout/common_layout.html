@@ -12,6 +12,7 @@
     </head>
 
     <body>
+        <input type="hidden" id="contextPath" th:value="${application.contextPath}">
         <div id="container">
             <div id="header">
                 <th:block th:replace="fragment/header :: headerFragment"></th:block>
