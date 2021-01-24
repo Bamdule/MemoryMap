@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/common_layout">
+
+    <th:block layout:fragment="css">
+    </th:block>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/page/user/user.js}"></script>
+    </th:block>
+
+    <div layout:fragment="content" style="height: 1000px;" id="content-wrap">
+        <input id="file" type="file" multiple/>
+        <input type="button" id="saveBtn" value="save"/>
+    </div>
+</html>

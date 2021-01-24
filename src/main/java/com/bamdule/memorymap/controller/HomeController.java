@@ -31,7 +31,7 @@ public class HomeController {
     @GetMapping(value = "/")
     public String homeView() {
         logger.info("[MYTEST] homeView");
-        return "page/main";
+        return "page/home/home";
     }
 
     @PostMapping(value = "/saveFile")

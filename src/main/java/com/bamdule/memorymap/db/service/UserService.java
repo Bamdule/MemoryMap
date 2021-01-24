@@ -1,5 +1,6 @@
 package com.bamdule.memorymap.db.service;
 
+import com.bamdule.memorymap.model.VO.UserVO;
 import com.bamdule.memorymap.model.entity.User;
 
 /**
@@ -9,5 +10,7 @@ import com.bamdule.memorymap.model.entity.User;
 public interface UserService {
 
     public void saveUser(User user);
+
+    public UserVO getUserByName(String userName);
 
 }

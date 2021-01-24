@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `file_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 -- 테이블 memory_map.memory 구조 내보내기
 CREATE TABLE IF NOT EXISTS `memory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -169,11 +169,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `account` varchar(45) NOT NULL,
-  `profile_img_id` int(11) NOT NULL,
+  `profile_img_id` int(11) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   `create_dt` datetime DEFAULT NULL,
   `update_dt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_user_name` (`name`),
   KEY `FK_user_file_info` (`profile_img_id`),
   CONSTRAINT `FK_user_file_info` FOREIGN KEY (`profile_img_id`) REFERENCES `file_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;

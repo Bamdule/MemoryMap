@@ -22,9 +22,9 @@ public class SearchController {
     @Autowired
     private UserService userService;
     
-    @GetMapping(value = "/")
+    @GetMapping(value = "")
     public String homeView() {
         logger.info("[MYTEST] homeView");
-        return "page/main";
+        return "page/search/search";
     }
 }

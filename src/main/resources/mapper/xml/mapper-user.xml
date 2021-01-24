@@ -2,7 +2,22 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.bamdule.memorymap.mapper.UserMapper">
+<mapper namespace="com.bamdule.memorymap.db.mapper.UserMapper">
+  
+
+    <select id="getUserByName" parameterType="string" resultType="userVO">
+        SELECT 
+            a.name,
+            a.profile_img_id as 'profileImgId',
+            concat(z.value, '/', b.path) as 'profileImgUrl',
+            a.create_dt as 'createDt',
+            a.update_dt as 'updateDt'
+        FROM user a
+        LEFT JOIN file_info b ON (b.id = a.profile_img_id)
+        JOIN property z on (z.name = 'aws_s3_domain')
+        WHERE a.name = #{userName}
+    </select>
+
     <insert id="saveUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user (
             account, 
@@ -16,13 +31,13 @@
             #{password},
             #{name},
             #{profileImgId},
-            #{createDt},
-            #{updateDt}
+            now(),
+            now()
         ) 
         ON DUPLICATE KEY UPDATE 
         profile_img_id = #{profileImgId}, 
         name = #{name},
-        update_dt = #{updateDt}
+        update_dt = now()
     </insert>
     
 <!--    <select id="getAdminById" resultType="admin" parameterType="int">

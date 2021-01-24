@@ -2,6 +2,7 @@ package com.bamdule.memorymap.db.service.impl;
 
 import com.bamdule.memorymap.db.mapper.UserMapper;
 import com.bamdule.memorymap.db.service.UserService;
+import com.bamdule.memorymap.model.VO.UserVO;
 import com.bamdule.memorymap.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,8 @@ public class UserServiceImpl implements UserService {
         userMapper.saveUser(user);
     }
 
+    @Override
+    public UserVO getUserByName(String userName) {
+        return userMapper.getUserByName(userName);
+    }
 }

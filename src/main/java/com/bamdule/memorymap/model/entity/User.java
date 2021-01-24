@@ -14,8 +14,8 @@ public class User {
     private String password;
     private Integer profileImgId;
 
-    private LocalDateTime createDt = LocalDateTime.now();
-    private LocalDateTime updateDt = LocalDateTime.now();
+    private LocalDateTime createDt;
+    private LocalDateTime updateDt;
 
     public Integer getId() {
         return id;
@@ -57,9 +57,25 @@ public class User {
         this.profileImgId = profileImgId;
     }
 
+    public LocalDateTime getCreateDt() {
+        return createDt;
+    }
+
+    public void setCreateDt(LocalDateTime createDt) {
+        this.createDt = createDt;
+    }
+
+    public LocalDateTime getUpdateDt() {
+        return updateDt;
+    }
+
+    public void setUpdateDt(LocalDateTime updateDt) {
+        this.updateDt = updateDt;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", account=" + account + ", password=" + password + ", profileImgId=" + profileImgId + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", account=" + account + ", password=" + password + ", profileImgId=" + profileImgId + ", createDt=" + createDt + ", updateDt=" + updateDt + '}';
     }
 
 }
