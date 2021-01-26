@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/")
     public String homeView() {
         logger.info("[MYTEST] homeView");
         return "page/user/user";

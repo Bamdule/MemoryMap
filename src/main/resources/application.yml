@@ -14,6 +14,8 @@ spring :
         multipart : 
             maxFileSize : 50MB 
             maxRequestSize : 50MB
+    main : 
+        allow-bean-definition-overriding : true
 
 mybatis :
     type-aliases-package : com.bamdule.memorymap.model

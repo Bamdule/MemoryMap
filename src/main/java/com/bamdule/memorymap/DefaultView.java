@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * @author MW
  */
-@Configuration
+//@Configuration
 public class DefaultView implements WebMvcConfigurer {
 
     @Override

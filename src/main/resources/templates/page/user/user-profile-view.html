@@ -12,5 +12,20 @@
     </th:block>
 
     <div layout:fragment="content" id="content-wrap">
+        <div id="user-info-wrap">
+            <div id="user-profileimg-wrap">
+                <img id="user-profileimg" th:src="${user.profileImgUrl}"/>
+            </div>
+            <div id="user-intro-wrap">
+                <div id="user-name" th:text="${user.name}"></div>
+                <div> 게시물 6 팔로워 8 팔로우 11</div>
+                <div> 
+                    <div>Min Woo Kim</div>
+                    <div> 안녕하세요!</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 1000px;"></div>
     </div>
 </html>
