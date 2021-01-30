@@ -64,16 +64,30 @@ a { color: black !important; }
     width: 70%;
     height: 100%;
 }
-
-
-#user-info-wrap {
-    height: 250px; 
-    width: 100%;
-    display: flex; 
-    flex-wrap :wrap;
-    border-bottom: lightgray solid 1px; 
-    align-items: center;
+/* width가 769px 이상 일때 작동  */
+@media screen and (min-width: 769px) {
+    #user-info-wrap {
+        height: 250px; 
+        width: 100%;
+        display: flex; 
+        flex-wrap :wrap;
+        border-bottom: lightgray solid 1px; 
+        align-items: center;
+    }
 }
+
+/* width가 768px 이하 일때 작동  */
+@media screen and (max-width: 768px) {
+    #user-info-wrap {
+        height: 500px; 
+        width: 100%;
+        display: flex; 
+        flex-wrap :wrap;
+        border-bottom: lightgray solid 1px; 
+        align-items: center;
+    }
+}
+
 
 #user-profileimg-wrap {
     height: 200px; 
@@ -90,11 +104,11 @@ a { color: black !important; }
 
 #user-intro-wrap {
     width: 200px;
-    height: 100%;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-/*    align-items: center;*/
+    /*    align-items: center;*/
 }
 
 #user-name {
