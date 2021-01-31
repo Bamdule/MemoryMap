@@ -5,12 +5,17 @@
       layout:decorator="layout/common_layout">
 
     <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/page/place/place-edit-view.css}" />
     </th:block>
 
     <th:block layout:fragment="script">
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f99c96c87cbf0a8ffcb27fa741f9e6ae&libraries=services,clusterer,drawing"></script>
         <script th:src="@{/js/page/place/place-edit-view.js}"></script>
         <script th:src="@{/js/page/common/KakaoMap.js}"></script>
+        <script th:src="@{/js/common/file/FileInfo.js}"></script>
+        <script th:src="@{/js/common/file/FileManager.js}"></script>
+        <script th:src="@{/js/common/file/Gallery.js}"></script>
+
     </th:block>
 
     <div layout:fragment="content" id="content-wrap">
@@ -26,8 +31,22 @@
                 <div id="search-btn" class="ui button">검색</div>
             </div>
             <div class="ui tab" data-tab="gallery">
-                <p></p> 
-                <p></p>
+                <div id="image-find-btn" class="ui button">이미지 찾기</div>
+
+                <div id="gallery-container">
+                    
+                </div>
+                <!--                <div id="gallery-container">
+                                    <div class="item">A</div>
+                                    <div class="item">B</div>
+                                    <div class="item">C</div>
+                                    <div class="item">D</div>
+                                    <div class="item">E</div>
+                                    <div class="item">F</div>
+                                    <div class="item">G</div>
+                                    <div class="item">H</div>
+                                    <div class="item">I</div>
+                                </div>-->
             </div>
             <div class="ui tab" data-tab="description">
                 <p></p>

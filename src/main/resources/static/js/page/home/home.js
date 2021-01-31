@@ -33,3 +33,9 @@ $(document).ready(function () {
         });
     });
 });
+console.log(`
+screen.width : ${screen.width}
+screen.height : ${screen.height}    
+screen.availWidth : ${screen.availWidth}
+screen.availHeight : ${screen.availHeight}
+`);

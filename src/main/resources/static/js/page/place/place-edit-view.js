@@ -22,5 +22,17 @@ $(document).ready(function () {
         kakaoSearch.search(keyword.val());
     });
 
+    let gallery = new Gallery({
+        baseDiv: $("#gallery-container")
+    });
+
+    let fileManager = new FileManager({
+        findBtn: $("#image-find-btn"),
+        changeCallback: function (file) {
+            console.log(file);
+            gallery.add({file});
+        }
+    });
+
 
 });
